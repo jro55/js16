@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp" lang ='en'>
+<head>
+	<title>JS16</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body ng-controller="mainController">
+	<div>
+		{{hauteHalibut.name}}
+	</div><br><br>
+	<div>View dishes that are: <button ng-click="youAreVegan()">Vegan</button><button ng-click="youAreGlutenFree()">Gluten Free</button><button ng-click="youAreCitrusFree()">Citrus Free</button>
+	</div><br><br>
+	<div ng-repeat='dinner in menuPlates' ng-click="openPlate($index)" ng-class="{highlight: dinner.canEat}">
+		{{dinner.name}} ----- Price: {{dinner.price}}
+		<div ng-show="dinner.showDescription">
+			{{dinner.description}}
+			<button ng-click='addToOrder($index, $event)'>Add to order</button>
+		</div>
+	</div>
+	<div class='orders'>
+		Your order is: 
+	</div>
+	<div ng-repeat='order in orders'>
+		{{order.name}} ---- Price: {{order.price}}
+	</div>
+	<div class='total'>
+		Your total is: ${{totalPrice}}
+	</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular-animate.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
+<script src="main.js" type="text/javascript"></script>
+</body>
+</html>
